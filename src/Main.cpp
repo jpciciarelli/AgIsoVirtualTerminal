@@ -80,6 +80,11 @@ AgISOVirtualTerminalApplication::MainWindow::MainWindow(juce::String name, int v
 
 #if JUCE_IOS || JUCE_ANDROID
 	setFullScreen(true);
+#elif JUCE_LINUX
+	setFullScreen(true);
+	setUsingNativeTitleBar (false);
+	setResizable (false, false);
+	juce::Desktop::getInstance().setKioskModeComponent(this, false);
 #else
 	setResizable(true, true);
 	centreWithSize(getWidth(), getHeight());
