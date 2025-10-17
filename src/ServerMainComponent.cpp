@@ -93,6 +93,8 @@ ServerMainComponent::ServerMainComponent(
 
 	setWantsKeyboardFocus(true);
 	addKeyListener(this);
+	/* Agregado para hacer zoom en la pantalla de 600p */
+	setTransform(juce::AffineTransform::scale(1.18f));
 }
 
 ServerMainComponent::~ServerMainComponent()
