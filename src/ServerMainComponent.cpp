@@ -93,8 +93,6 @@ ServerMainComponent::ServerMainComponent(
 
 	setWantsKeyboardFocus(true);
 	addKeyListener(this);
-	/* Agregado para hacer zoom en la pantalla de 600p */
-	setTransform(juce::AffineTransform::scale(1.18f));
 }
 
 ServerMainComponent::~ServerMainComponent()
@@ -675,14 +673,14 @@ void ServerMainComponent::resized()
 	auto lMenuBarHeight = juce::LookAndFeel::getDefaultLookAndFeel().getDefaultMenuBarHeight();
 	auto lBounds = getLocalBounds();
 
-	workingSetSelector.setBounds(0, lMenuBarHeight + 4, 100, 600);
-	dataMaskRenderer.setBounds(100, lMenuBarHeight + 4, get_data_mask_area_size_x_pixels(), get_data_mask_area_size_y_pixels());
+	workingSetSelector.setBounds(0, lMenuBarHeight, 100, 600);
+	dataMaskRenderer.setBounds(100, lMenuBarHeight, get_data_mask_area_size_x_pixels(), get_data_mask_area_size_y_pixels());
 	vtNumberComponent.setBounds(dataMaskRenderer.getBounds().getX() + (dataMaskRenderer.getWidth() / 4.0),
 	                            dataMaskRenderer.getBounds().getY() + (dataMaskRenderer.getHeight() / 10.0),
 	                            dataMaskRenderer.getBounds().getWidth() / 2.0,
 	                            (dataMaskRenderer.getBounds().getHeight() / 10.0) * 8);
 	softKeyMaskRenderer.setBounds(100 + get_data_mask_area_size_x_pixels(),
-	                              lMenuBarHeight + 4,
+	                              lMenuBarHeight,
 	                              2 * SoftKeyMaskDimensions::PADDING + get_physical_soft_key_columns() * (SoftKeyMaskDimensions::PADDING + get_soft_key_descriptor_y_pixel_height()),
 	                              get_data_mask_area_size_y_pixels());
 	loggerViewport.setSize(getWidth(), getHeight() * .2f);

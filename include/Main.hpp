@@ -18,7 +18,10 @@ class AgISOVirtualTerminalApplication : public juce::JUCEApplication
 {
 public:
 	//==============================================================================
-	AgISOVirtualTerminalApplication() {}
+	AgISOVirtualTerminalApplication() {
+		/* Agregado para hacer zoom en la pantalla de 600p */
+		juce::Desktop::getInstance().setGlobalScaleFactor(1.2f);
+	}
 
 	const juce::String getApplicationName() override
 	{
