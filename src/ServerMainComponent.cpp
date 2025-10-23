@@ -809,6 +809,7 @@ bool ServerMainComponent::perform(const InvocationInfo &info)
 			popupMenu->addTextBlock("This is an ISO11783-6 virtual terminal server application based on AgIsoStack++ and the JUCE framework. This software is intended to be used for testing ISO11783 applications that consume AgIsoStack libraries, and serves as a reference implementation of our VT server files in AgIsoStack++.");
 			popupMenu->addButton("OK", 0, KeyPress(KeyPress::returnKey, 0, 0));
 			popupMenu->enterModalState(true, ModalCallbackFunction::create(LanguageCommandConfigClosed{ *this }));
+			addAndMakeVisible(*popupMenu);
 			retVal = true;
 		}
 		break;
@@ -844,6 +845,7 @@ bool ServerMainComponent::perform(const InvocationInfo &info)
 			popupMenu->addButton("OK", 1, KeyPress(KeyPress::returnKey, 0, 0));
 			popupMenu->addButton("Cancel", 0, KeyPress(KeyPress::escapeKey, 0, 0));
 			popupMenu->enterModalState(true, ModalCallbackFunction::create(LanguageCommandConfigClosed{ *this }));
+			addAndMakeVisible(*popupMenu);
 		}
 		break;
 
@@ -855,6 +857,7 @@ bool ServerMainComponent::perform(const InvocationInfo &info)
 			popupMenu->addButton("Cancel", 0, KeyPress(KeyPress::escapeKey, 0, 0));
 			popupMenu->getComboBoxComponent("Version")->setSelectedItemIndex(static_cast<int>(versionToReport));
 			popupMenu->enterModalState(true, ModalCallbackFunction::create(LanguageCommandConfigClosed{ *this }));
+			addAndMakeVisible(*popupMenu);
 			retVal = true;
 		}
 		break;
@@ -879,6 +882,7 @@ bool ServerMainComponent::perform(const InvocationInfo &info)
 			popupMenu->addButton("OK", 3, KeyPress(KeyPress::returnKey, 0, 0));
 			popupMenu->addButton("Cancel", 0, KeyPress(KeyPress::escapeKey, 0, 0));
 			popupMenu->enterModalState(true, ModalCallbackFunction::create(LanguageCommandConfigClosed{ *this }));
+			addAndMakeVisible(*popupMenu);
 			retVal = true;
 		}
 		break;
@@ -895,6 +899,7 @@ bool ServerMainComponent::perform(const InvocationInfo &info)
 			popupMenu->addButton("OK", 4, KeyPress(KeyPress::returnKey, 0, 0));
 			popupMenu->addButton("Cancel", 0, KeyPress(KeyPress::escapeKey, 0, 0));
 			popupMenu->enterModalState(true, ModalCallbackFunction::create(LanguageCommandConfigClosed{ *this }));
+			addAndMakeVisible(*popupMenu);
 			retVal = true;
 		}
 		break;
@@ -903,6 +908,7 @@ bool ServerMainComponent::perform(const InvocationInfo &info)
 		{
 			popupMenu = std::make_unique<ShortcutsWindow>(alarmAckKeyCode);
 			popupMenu->enterModalState(true, ModalCallbackFunction::create(LanguageCommandConfigClosed{ *this }));
+			addAndMakeVisible(*popupMenu);
 			retVal = true;
 		}
 		break;
@@ -981,7 +987,8 @@ bool ServerMainComponent::perform(const InvocationInfo &info)
 			auto result = placement.appliedTo(area, Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea.reduced(20));
 			configureHardwareWindow->setBounds(result);
 
-			configureHardwareWindow->setVisible(true);
+			// configureHardwareWindow->setVisible(true);
+			addAndMakeVisible(*configureHardwareWindow);
 			retVal = true;
 		}
 		break;
