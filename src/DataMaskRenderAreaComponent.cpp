@@ -290,6 +290,7 @@ void DataMaskRenderAreaComponent::mouseUp(const MouseEvent &event)
 								repaint();
 							};
 							inputListModal->enterModalState(true, ModalCallbackFunction::create(std::move(resultCallback)), false);
+							addAndMakeVisible(*inputListModal);
 							if (nullptr != parentWorkingSet)
 							{
 								parentWorkingSet->set_object_focus(clickedObject->get_id());
